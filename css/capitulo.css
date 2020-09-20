@@ -1,0 +1,35 @@
+#texto_capitulo{
+
+    font-size: 19px;
+
+}
+
+#versao{
+        
+    color: #008ee8;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 5px;
+    border: #008ee8 dashed 1px;
+    border-radius: 10px;
+    
+}
+
+#numero_verso{
+
+    color: silver;
+    font-size: 13px;
+
+}
+
+#barraTituloLivro{
+
+    height: 27px;
+    background-color: #008ee8;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 99;
+    opacity: 0;
+
+}

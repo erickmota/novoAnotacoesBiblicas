@@ -1,0 +1,162 @@
+<?php
+
+/* Função: Classe responsável por fazer o controle dos capítulos do sistema
+Autor: Erick Mota - erickmota.com */
+
+class Capitulo{
+
+public $livro;
+public $capitulo;
+public $versao;
+
+/* Classe responsável por retornar o ID do livro desejado */
+public function retornarIdLivro(){
+
+    include 'conexao.class.php';
+
+    $sql = mysqli_query($conn, "SELECT * FROM livros WHERE liv_nome='$this->livro'");
+    $row = mysqli_fetch_array($sql);
+    $idLivro = $row["liv_id"];
+
+    return $idLivro;
+
+}
+
+/* Classe responsável por retornar i ID da versão */
+public function retornarIdVersao(){
+
+    include 'conexao.class.php';
+
+    $sql = mysqli_query($conn, "SELECT * FROM versoes WHERE nome_curto='$this->versao'");
+    $row = mysqli_fetch_array($sql);
+    $idVersao = $row["vrs_id"];
+
+    return $idVersao;
+
+}
+
+/* Classe responsável por exibir o capítulo na página de leitura */
+public function exibirCapitulo($idLivro, $idVersao){
+
+    include 'conexao.class.php';
+
+    $sql = mysqli_query($conn, "SELECT * FROM versiculos WHERE ver_liv_id='$idLivro' AND ver_capitulo='$this->capitulo' AND ver_vrs_id='$idVersao' ORDER BY ver_id");
+    while ($row = mysqli_fetch_assoc($sql)){
+            
+        $array[] = $row;
+        
+    }
+
+    return $array;
+    
+}
+
+/* Função responsável por retroceder um capítulo */
+public function voltarCapitulo($livro, $capitulo, $versao){
+        
+    $livroUrl = urlencode($livro);
+    
+    include "conexao.class.php";
+    
+    $somaCapitulo = $capitulo - 1;
+    
+    $sql = mysqli_query($conn, "SELECT * FROM livros WHERE liv_nome='$livro'");
+    while ($row = mysqli_fetch_array($sql)) {
+        
+        $idLivro = $row["liv_id"];
+        $idLivro2 = $row["liv_id"] - 1;
+        
+        $sql2 = mysqli_query($conn, "SELECT ver_capitulo FROM versiculos WHERE ver_vrs_id='$versao' AND ver_liv_id='$idLivro' ORDER By ver_capitulo DESC");
+        $linha = mysqli_fetch_array($sql2);
+        
+        $sql6 = mysqli_query($conn, "SELECT ver_capitulo FROM versiculos WHERE ver_vrs_id='$versao' AND ver_liv_id='$idLivro2' ORDER By ver_capitulo DESC");
+        $linha6 = mysqli_fetch_array($sql6);
+        
+        $cap = $linha["ver_capitulo"];
+        $cap6 = $linha6["ver_capitulo"];
+        
+        if($somaCapitulo <= $cap && $somaCapitulo > 0){
+            
+            echo "<a href='./$livroUrl/$somaCapitulo/$this->versao'>< $livro $somaCapitulo</a>";
+            
+        }else{
+            
+            $somaLivro = $idLivro - 1;
+            
+            $sql3 = mysqli_query($conn, "SELECT * FROM livros WHERE liv_id='$somaLivro'");
+            $linha2 = mysqli_fetch_array($sql3);
+            
+            $nome = $linha2["liv_nome"];
+            
+            $nomeUrl = urlencode($nome);
+            
+            if($nome == NULL){
+                
+                echo "";
+                
+            }else{
+                
+                echo "<a href='./$nomeUrl/$cap6/$this->versao'>< $nome $cap6</a>";
+                
+            }
+            
+        }
+        
+        
+    }
+    
+}
+
+public function avancarCapitulo($livro, $capitulo, $versao){
+        
+    $livroUrl = urlencode($livro);
+    
+    include "conexao.class.php";
+    
+    $somaCapitulo = $capitulo + 1;
+    
+    $sql = mysqli_query($conn, "SELECT * FROM livros WHERE liv_nome='$livro'");
+    while ($row = mysqli_fetch_array($sql)) {
+        
+        $idLivro = $row["liv_id"];
+        
+        $sql2 = mysqli_query($conn, "SELECT ver_capitulo FROM versiculos WHERE ver_vrs_id='$versao' AND ver_liv_id='$idLivro' ORDER By ver_capitulo DESC");
+        $linha = mysqli_fetch_array($sql2);
+        
+        $cap = $linha["ver_capitulo"];
+        
+        if($somaCapitulo <= $cap){
+            
+            echo "<a href='./$livroUrl/$somaCapitulo/$this->versao'>$livro $somaCapitulo ></a>";
+            
+        }else{
+            
+            $somaLivro = $idLivro + 1;
+            
+            $sql3 = mysqli_query($conn, "SELECT * FROM livros WHERE liv_id='$somaLivro'");
+            $linha2 = mysqli_fetch_array($sql3);
+            
+            $nome = $linha2["liv_nome"];
+            
+            $nomeUrl = urlencode($nome);
+            
+            if($nome == NULL){
+                
+                echo "";
+                
+            }else{
+                
+                echo "<a href='./$nomeUrl/1/$this->versao'>$nome 1 ></a>";
+                
+            }
+            
+        }
+        
+        
+    }
+    
+}
+
+}
+
+?>
