@@ -8,9 +8,9 @@
 
             <div class="d-none d-sm-block col-sm-3 col-md-3 col-lg-3">
 
-                <img id="logo" class="d-none d-md-block" src="img/logo.png" width="150px">
+                <img onclick="window.location='./'" id="logo" class="d-none d-md-block" src="img/logo.png" width="150px">
 
-                <img id="logo" class="d-block d-md-none" src="img/logoMenor.png" height="52px">
+                <img onclick="window.location='./'" id="logo" class="d-block d-md-none" src="img/logoMenor.png" height="52px">
 
             </div>
 
