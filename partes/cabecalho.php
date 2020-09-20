@@ -6,14 +6,16 @@
 
         <div class="row">
 
-            <div class="d-none d-md-block col-md-3 col-lg-3">
+            <div class="d-none d-sm-block col-sm-3 col-md-3 col-lg-3">
 
-                <img src="img/logo.png" width="150px">
+                <img id="logo" class="d-none d-md-block" src="img/logo.png" width="150px">
+
+                <img id="logo" class="d-block d-md-none" src="img/logoMenor.png" height="52px">
 
             </div>
 
 
-            <div class="col-7 col-sm-7 col-md-6 col-lg-6">
+            <div class="col-7 col-sm-6 col-md-6 col-lg-6">
 
                 <form class="mt-3">
                     <div class="form-group">
@@ -23,7 +25,7 @@
 
             </div>
 
-            <div class="col-5 col-sm-5 col-md-3 col-lg-3">
+            <div class="col-5 col-sm-3 col-md-3 col-lg-3">
 
                 <div class="row">
 
