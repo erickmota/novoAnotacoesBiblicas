@@ -36,6 +36,17 @@
 
     <link rel="stylesheet" href="css/numero_capitulo.css" type="text/css">
 
+    <script>
+
+        /* Função JS com PHP para ir para o capítulo selecionado */
+        function irParaCapitulo(capitulo){
+
+            window.location="<?php echo urlencode($explode[0]) ?>/" + capitulo + "/acf";
+
+        }
+
+    </script>
+
 </head>
 
 <body>
@@ -54,7 +65,7 @@
 
             <div class="col-12 col-lg-9 mt-3">
 
-                <h1>Marcos</h1>
+                <h1><?php echo $explode[0] ?></h1>
 
             </div>
 
@@ -73,7 +84,11 @@
 
                     while($i <= $qtdCapitulosPorLivro){
 
-                        echo "<div class='col-2 col-md-1 text-center'>{$i}</div>";
+                    ?>
+
+                        <div id="numeroIsolado" class="col-2 col-md-1 text-center" onclick="irParaCapitulo(<?php echo $i; ?>)"><?php echo $i; ?></div>
+
+                    <?php
 
                         $i++;
 

@@ -20,6 +20,9 @@
     
     ?>
 
+    <link rel="stylesheet" href="css/home.css" type="text/css">
+    <script type="text/javascript" src="js/home.js"></script>
+
 </head>
 
 <body>
@@ -78,48 +81,48 @@
 
                     <div class="col-12 col-sm-6 col-md-3">
 
-                        <p class="bg-light p-2">Mateus</p>
-                        <p class="bg-light p-2">Marcos</p>
-                        <p class="bg-light p-2">Lucas</p>
-                        <p class="bg-light p-2">João</p>
-                        <p class="bg-light p-2">Atos</p>
-                        <p class="bg-light p-2">Romanos</p>
-                        <p class="bg-light p-2">1 Coríntios</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Mateus')">Mateus</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Marcos')">Marcos</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Lucas')">Lucas</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('João')">João</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Atos')">Atos</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Romanos')">Romanos</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('1+Coríntios')">1 Coríntios</p>
         
                     </div>
         
                     <div class="col-12 col-sm-6 col-md-3">
         
-                        <p class="bg-light p-2">2 Coríntios</p>
-                        <p class="bg-light p-2">Gálatas</p>
-                        <p class="bg-light p-2">Efésios</p>
-                        <p class="bg-light p-2">Filipenses</p>
-                        <p class="bg-light p-2">Colossenses</p>
-                        <p class="bg-light p-2">1 Tessalonicenses</p>
-                        <p class="bg-light p-2">2 Tessalonicenses</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('2+Coríntios')">2 Coríntios</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Gálatas')">Gálatas</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Efésios')">Efésios</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Filipenses')">Filipenses</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Colossenses')">Colossenses</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('1+Tessalonicenses')">1 Tessalonicenses</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('2+Tessalonicenses')">2 Tessalonicenses</p>
         
                     </div>
         
                     <div class="col-12 col-sm-6 col-md-3">
         
-                        <p class="bg-light p-2">1 Timóteo</p>
-                        <p class="bg-light p-2">2 Timóteo</p>
-                        <p class="bg-light p-2">Tito</p>
-                        <p class="bg-light p-2">Filemom</p>
-                        <p class="bg-light p-2">Hebreus</p>
-                        <p class="bg-light p-2">Tiago</p>
-                        <p class="bg-light p-2">1 Pedro</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('1+Timóteo')">1 Timóteo</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('2+Timóteo')">2 Timóteo</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Tito')">Tito</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Filemom')">Filemom</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Hebreus')">Hebreus</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Tiago')">Tiago</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('1+Pedro')">1 Pedro</p>
         
                     </div>
         
                     <div class="col-12 col-sm-6 col-md-3">
         
-                        <p class="bg-light p-2">2 Pedro</p>
-                        <p class="bg-light p-2">1 João</p>
-                        <p class="bg-light p-2">2 João</p>
-                        <p class="bg-light p-2">3 João</p>
-                        <p class="bg-light p-2">Judas</p>
-                        <p class="bg-light p-2">Apocalipse</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('2+Pedro')">2 Pedro</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('1+João')">1 João</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('2+João')">2 João</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('3+João')">3 João</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Judas')">Judas</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Apocalipse')">Apocalipse</p>
         
                     </div>
 
@@ -149,58 +152,58 @@
 
                     <div class="col-12 col-sm-6 col-md-3">
 
-                        <p class="bg-light p-2">Gênesis</p>
-                        <p class="bg-light p-2">Êxodo</p>
-                        <p class="bg-light p-2">Números</p>
-                        <p class="bg-light p-2">Deuteronômio</p>
-                        <p class="bg-light p-2">Josué</p>
-                        <p class="bg-light p-2">Juízes</p>
-                        <p class="bg-light p-2">Rute</p>
-                        <p class="bg-light p-2">1 Samuel</p>
-                        <p class="bg-light p-2">2 Samuel</p>
-                        <p class="bg-light p-2">1 Reis</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Gênesis')">Gênesis</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Êxodo')">Êxodo</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Números')">Números</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Deuteronômio')">Deuteronômio</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Josué')">Josué</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Juízes')">Juízes</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Rute')">Rute</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('1+Samuel')">1 Samuel</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('2+Samuel')">2 Samuel</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('1+Reis')">1 Reis</p>
         
                     </div>
         
                     <div class="col-12 col-sm-6 col-md-3">
         
-                        <p class="bg-light p-2">2 Reis</p>
-                        <p class="bg-light p-2">1 Crônicas</p>
-                        <p class="bg-light p-2">2 Crônicas</p>
-                        <p class="bg-light p-2">Esdras</p>
-                        <p class="bg-light p-2">Neemias</p>
-                        <p class="bg-light p-2">Ester</p>
-                        <p class="bg-light p-2">Jó</p>
-                        <p class="bg-light p-2">Salmos</p>
-                        <p class="bg-light p-2">Provérbios</p>
-                        <p class="bg-light p-2">Eclesiastes</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('2+Reis')">2 Reis</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('1+Crônicas')">1 Crônicas</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('2+Crônicas')">2 Crônicas</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Esdras')">Esdras</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Neemias')">Neemias</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Ester')">Ester</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Jó')">Jó</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Salmos')">Salmos</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Provérbios')">Provérbios</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Eclesiastes')">Eclesiastes</p>
         
                     </div>
         
                     <div class="col-12 col-sm-6 col-md-3">
         
-                        <p class="bg-light p-2">Cânticos</p>
-                        <p class="bg-light p-2">Isaías</p>
-                        <p class="bg-light p-2">Lamentações</p>
-                        <p class="bg-light p-2">Ezequiel</p>
-                        <p class="bg-light p-2">Daniel</p>
-                        <p class="bg-light p-2">Oséias</p>
-                        <p class="bg-light p-2">Joel</p>
-                        <p class="bg-light p-2">Amós</p>
-                        <p class="bg-light p-2">Obadias</p>
-                        <p class="bg-light p-2">Jonas</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Cânticos')">Cânticos</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Isaías')">Isaías</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Lamentações')">Lamentações</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Ezequiel')">Ezequiel</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Daniel')">Daniel</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Oséias')">Oséias</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Joel')">Joel</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Amós')">Amós</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Obadias')">Obadias</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Jonas')">Jonas</p>
         
                     </div>
         
                     <div class="col-12 col-sm-6 col-md-3">
         
-                        <p class="bg-light p-2">Miquéias</p>
-                        <p class="bg-light p-2">Naum</p>
-                        <p class="bg-light p-2">Habacuque</p>
-                        <p class="bg-light p-2">Sofonias</p>
-                        <p class="bg-light p-2">Ageu</p>
-                        <p class="bg-light p-2">Zacarias</p>
-                        <p class="bg-light p-2">Malaquias</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Miquéias')">Miquéias</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Naum')">Naum</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Habacuque')">Habacuque</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Sofonias')">Sofonias</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Ageu')">Ageu</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Zacarias')">Zacarias</p>
+                        <p id="nomeLivro" class="p-2" onclick="irParaLivro('Malaquias')">Malaquias</p>
         
                     </div>
 

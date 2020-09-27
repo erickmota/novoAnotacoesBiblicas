@@ -1,0 +1,12 @@
+#nomeLivro{
+
+    cursor: pointer;
+    background-color: #f8f9fa;
+
+}
+
+#nomeLivro:hover{
+
+    background-color: #ececec;
+
+}
