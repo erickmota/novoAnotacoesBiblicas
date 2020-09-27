@@ -35,7 +35,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-    <base href='http://localhost/novoAB/sistema/'>
+    <?php
+
+    /* Definindo a base para o site */
+    include "php/base_paginas.php";
+    
+    ?>
 
     <link rel="stylesheet" href="css/capitulo.css" type="text/css">
     <script type="text/javascript" src="js/capitulo.js"></script>

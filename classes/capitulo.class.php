@@ -107,6 +107,7 @@ public function voltarCapitulo($livro, $capitulo, $versao){
     
 }
 
+/* Função responsável por avançar um capítulo */
 public function avancarCapitulo($livro, $capitulo, $versao){
         
     $livroUrl = urlencode($livro);
@@ -155,6 +156,23 @@ public function avancarCapitulo($livro, $capitulo, $versao){
         
     }
     
+}
+
+/* Função responsável por retornar a quantidade de capítulo existente por livro */
+public function retornaQtdCapituloPorLivro($versao, $idLivro){
+        
+    include 'conexao.class.php';
+    
+    $livro = $this->livro;
+        
+    /* Estou acrescentando o "ver_versiculo" a busca, porque, como na tabela do BD existem muitos versos de um mesmo capítulo,
+    o número do capítulo seria repetido muitas vezes. */
+    $sql = mysqli_query($conn, "SELECT ver_capitulo FROM versiculos WHERE ver_liv_id='$idLivro' AND ver_vrs_id='2' AND ver_versiculo='1' ORDER BY ver_capitulo desc");
+
+    $qtd = mysqli_num_rows($sql);
+
+    return $qtd;
+
 }
 
 }
