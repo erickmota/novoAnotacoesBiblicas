@@ -59,6 +59,7 @@
         ?>
         <!-- /Cabeçalho -->
 
+        <!-- Barra azul com o título do livro -->
         <div id="barraTituloLivro" class="row justify-content-center">
 
             <div class="col-12 col-lg-9 text-light text-uppercase font-weight-bold">
@@ -72,6 +73,7 @@
             </div>
 
         </div>
+        <!-- /Barra azul com o título do livro -->
 
         <div class="row justify-content-center mt-3">
 
