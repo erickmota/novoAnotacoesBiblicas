@@ -77,7 +77,9 @@ public function voltarCapitulo($livro, $capitulo, $versao){
         
         if($somaCapitulo <= $cap && $somaCapitulo > 0){
             
-            echo "<a href='./$livroUrl/$somaCapitulo/$this->versao'>< $livro $somaCapitulo</a>";
+            /* Um echo aparece se a tela for grande, e o outro aparece se a tela for pequena */
+            echo "<a class='d-none d-md-block' href='./$livroUrl/$somaCapitulo/$this->versao'>< $livro $somaCapitulo</a>";
+            echo "<a class='d-block d-md-none' href='./$livroUrl/$somaCapitulo/$this->versao'><<</a>";
             
         }else{
             
@@ -96,7 +98,9 @@ public function voltarCapitulo($livro, $capitulo, $versao){
                 
             }else{
                 
-                echo "<a href='./$nomeUrl/$cap6/$this->versao'>< $nome $cap6</a>";
+                /* Um echo aparece se a tela for grande, e o outro aparece se a tela for pequena */
+                echo "<a class='d-none d-md-block' href='./$nomeUrl/$cap6/$this->versao'>< $nome $cap6</a>";
+                echo "<a class='d-block d-md-none' href='./$nomeUrl/$cap6/$this->versao'><<</a>";
                 
             }
             
@@ -128,7 +132,9 @@ public function avancarCapitulo($livro, $capitulo, $versao){
         
         if($somaCapitulo <= $cap){
             
-            echo "<a href='./$livroUrl/$somaCapitulo/$this->versao'>$livro $somaCapitulo ></a>";
+            /* Um echo aparece se a tela for grande, e o outro aparece se a tela for pequena */
+            echo "<a class='d-none d-md-block' href='./$livroUrl/$somaCapitulo/$this->versao'>$livro $somaCapitulo ></a>";
+            echo "<a class='d-block d-md-none' href='./$livroUrl/$somaCapitulo/$this->versao'>>></a>";
             
         }else{
             
@@ -147,7 +153,9 @@ public function avancarCapitulo($livro, $capitulo, $versao){
                 
             }else{
                 
-                echo "<a href='./$nomeUrl/1/$this->versao'>$nome 1 ></a>";
+                /* Um echo aparece se a tela for grande, e o outro aparece se a tela for pequena */
+                echo "<a class='d-none d-md-block' href='./$nomeUrl/1/$this->versao'>$nome 1 ></a>";
+                echo "<a class='d-block d-md-none' href='./$nomeUrl/1/$this->versao'>>></a>";
                 
             }
             

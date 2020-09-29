@@ -142,7 +142,7 @@
                         
                             <p>
                             
-                                Capítulos
+                                <a href="<?php echo urlencode($explode[0])."/{$explode[2]}" ?>">Capítulos</a>
                             
                             </p>
                         

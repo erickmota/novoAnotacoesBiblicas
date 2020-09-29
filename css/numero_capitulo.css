@@ -1,12 +1,12 @@
 #espacoNumeros{
 
-    font-size: 20px;
     line-height: 60px;
 
 }
 
 #numeroIsolado{
 
+    font-size: 23px;
     cursor: pointer;
     color: #00b4ff;
 
@@ -14,6 +14,12 @@
 
 #numeroIsolado:hover{
 
-    text-decoration: underline;
+    color: #008bc7;
+
+}
+
+#corpoNumeros{
+
+    min-height: 53%;
 
 }
