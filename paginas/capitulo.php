@@ -45,6 +45,17 @@
     <link rel="stylesheet" href="css/capitulo.css" type="text/css">
     <script type="text/javascript" src="js/capitulo.js"></script>
 
+    <!-- Scripts q n podem estar em páginas separadas -->
+    <script>
+        
+        function selecionarVersao(livro){
+
+            window.location=livro;
+
+        }
+
+    </script>
+
 </head>
 
 <body>
@@ -83,11 +94,36 @@
                 <h1 class="mb-3"><?php echo "{$explode[0]} {$explode[1]}" ?></h1>
 
                 <!-- Seleção de versões -->
-                <select id="versao" class="mb-3">
+                <select id="versao" class="mb-3" onchange="selecionarVersao(this.value)">
+
+                    <?php
+                    
+                    /* Retornando todas as versões disponíveis do banco de dados, e imprimindo na tela */
+                    foreach($classeCapitulo->retornaVersoes() as $arrVersao){
+                    
+                    ?>
+
+                    <?php
+                    
+                    if(strtolower($arrVersao["nome_curto"]) == $explode[2]){
+
+                        $selected = "Selected";
+
+                    }else{
+
+                        $selected = "";
+
+                    }
+                    
+                    ?>
                 
-                    <option>Almeida Atualizada - AA</option>
-                    <option>Almeida Corrigida e Fiel - ACF</option>
-                    <option>Nova Versão Internacional - NVI</option>
+                    <option value="<?php echo urlencode($explode[0])."/{$explode[1]}/".strtolower($arrVersao["nome_curto"]); ?>" <?php echo $selected ?>><?php echo "{$arrVersao["vrs_nome"]} - {$arrVersao["nome_curto"]}" ?></option>
+
+                    <?php
+                    
+                    }
+                    
+                    ?>
                 
                 </select>
 

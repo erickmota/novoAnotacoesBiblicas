@@ -41,7 +41,7 @@
         /* Função JS com PHP para ir para o capítulo selecionado */
         function irParaCapitulo(capitulo){
 
-            window.location="<?php echo urlencode($explode[0]) ?>/" + capitulo + "/acf";
+            window.location="<?php echo urlencode($explode[0]) ?>/" + capitulo + "/<?php echo $explode[1] ?>";
 
         }
 

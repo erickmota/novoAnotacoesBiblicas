@@ -183,6 +183,22 @@ public function retornaQtdCapituloPorLivro($versao, $idLivro){
 
 }
 
+/* Função para retornar as versões disponíveis no BD */
+public function retornaVersoes(){
+
+    include 'conexao.class.php';
+
+    $sql = mysqli_query($conn, "SELECT * FROM versoes WHERE nome_curto!=''");
+    while ($row = mysqli_fetch_assoc($sql)){
+            
+        $array[] = $row;
+        
+    }
+
+    return $array;
+
+}
+
 }
 
 ?>
