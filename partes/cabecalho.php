@@ -31,7 +31,7 @@
 
                     <div class="col">
 
-                        <img id="iconeLogin" class="float-right" src="img/iconeLogin.png" width="25px">
+                        <img onclick="window.location='login'" id="iconeLogin" class="float-right" src="img/iconeLogin.png" width="25px">
 
                     </div>
 
