@@ -21,6 +21,10 @@ if(isset($_GET["url"])){
 
             include "paginas/login.php";
 
+        }else if($explode[0] == "cadastro"){
+
+            include "paginas/cadastro.php";
+
         }
 
     }

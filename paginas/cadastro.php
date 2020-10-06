@@ -20,7 +20,7 @@
     
     ?>
 
-    <link rel="stylesheet" href="css/login.css" type="text/css">
+    <link rel="stylesheet" href="css/cadastro.css" type="text/css">
 
 </head>
 
@@ -28,7 +28,7 @@
 
     <div class="container-fluid">
 
-        <div class="row justify-content-center mt-5 pt-5">
+        <div class="row justify-content-center mt-4">
 
             <div class="col text-center">
 
@@ -44,11 +44,11 @@
 
                 <h5 class="text-muted">
 
-                    Faça seu login no AB
+                    Faça seu cadastro no AB
 
                 </h5>
 
-                <small class="text-muted">Seja bem vindo, faça o login para acessar sua conta</small>
+                <small class="text-muted">Faça seu cadastro, crie comentários privados ou públicos,<br>crie marcações, siga outras pessoas, curta outros comentários etc...</small>
 
             </div>
 
@@ -62,7 +62,15 @@
                 
                     <div class="form-group">
 
+                        <input type="text" class="form-control" placeholder="Nickname">
+                        <small class="form-text text-muted text-left">* Crie um apelido único, sem caracteres especiais ou espaços</small>
+
+                    </div>
+
+                    <div class="form-group">
+
                         <input type="email" class="form-control" placeholder="E-mail">
+                        <small class="form-text text-muted text-left">* Utilize um e-mail válido</small>
 
                     </div>
 
@@ -74,17 +82,17 @@
 
                     <div class="form-group">
 
+                        <input type="password" class="form-control" placeholder="Confirmar senha">
+
+                    </div>
+
+                    <div class="form-group">
+
                         <div class="row">
 
-                            <div class="col-6">
+                            <div class="col">
 
-                                <button onclick="window.location='cadastro'" type="button" class="btn btn-secondary btn-block mt-2">Cadastrar-se</button>
-
-                            </div>
-
-                            <div class="col-6">
-
-                                <button type="submit" class="btn btn-primary btn-block mt-2">Entrar</button>
+                                <button type="submit" class="btn btn-primary btn-block mt-2">Cadastrar-se</button>
 
                             </div>
 
@@ -102,9 +110,9 @@
 
             <div class="col-11 col-sm-8 col-md-5 col-xl-3">
 
-                <p class="text-muted text-center">
+                <p class="text-muted text-left">
 
-                    <a id="linkVoltarNavegacao" onclick="history.back()">< Voltar à navegação</a> / Esqueci a senha
+                    <a id="linkVoltarNavegacao" onclick="window.location=''">< Voltar à navegação</a>
 
                 </p>
 

@@ -63,7 +63,7 @@
 
         <div class="row justify-content-center">
 
-            <div class="col-12 col-lg-9 mt-3 border-bottom pb-2">
+            <div class="col-12 col-lg-9 mt-3 border-bottom pb-1">
 
                 <h1><?php echo $explode[0] ?></h1>
 
@@ -71,7 +71,7 @@
 
         </div>
 
-        <div id="corpoNumeros" class="row justify-content-center">
+        <div id="corpoNumeros" class="row justify-content-center pt-3">
 
             <div id="espacoNumeros" class="col-12 col-lg-9">
 

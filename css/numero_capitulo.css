@@ -6,20 +6,22 @@
 
 #numeroIsolado{
 
-    font-size: 23px;
     cursor: pointer;
-    color: #00b4ff;
+    color: white;
+    background-color: #008ee8;
+    border: 5px solid white;
+    border-radius: 15px;
 
 }
 
 #numeroIsolado:hover{
 
-    color: #008bc7;
+    background-color: #006fb4;
 
 }
 
 #corpoNumeros{
 
-    min-height: 53%;
+    min-height: 80%;
 
 }
