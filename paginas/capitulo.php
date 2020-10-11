@@ -75,11 +75,15 @@
 
             <div class="col-12 col-lg-9 text-light text-uppercase font-weight-bold">
 
-                <?php
-                
-                echo "{$explode[0]} {$explode[1]} - {$explode[2]}";
-                
-                ?>
+                <p id="textoTituloBarraAzul">
+
+                    <?php
+                    
+                    echo "{$explode[0]} {$explode[1]} - {$explode[2]}";
+                    
+                    ?>
+
+                </p>
 
             </div>
 

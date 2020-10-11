@@ -7,16 +7,15 @@
 #numeroIsolado{
 
     cursor: pointer;
-    color: white;
-    background-color: #008ee8;
+    background-color: #f8f9fa;
     border: 5px solid white;
-    border-radius: 15px;
+    border-radius: 10px;
 
 }
 
 #numeroIsolado:hover{
 
-    background-color: #006fb4;
+    background-color: #ececec;
 
 }
 
