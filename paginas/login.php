@@ -58,17 +58,17 @@
 
             <div class="col-11 col-sm-8 col-md-5 col-xl-3 text-center">
 
-                <form>
+                <form method="POST" action="./php/login.php">
                 
                     <div class="form-group">
 
-                        <input type="email" class="form-control" placeholder="E-mail">
+                        <input type="email" name="email" class="form-control" placeholder="E-mail">
 
                     </div>
 
                     <div class="form-group">
 
-                        <input type="password" class="form-control" placeholder="Senha">
+                        <input type="password" name="senha" class="form-control" placeholder="Senha">
 
                     </div>
 

@@ -5,6 +5,14 @@
     <?php
 
     @$explode = explode("/", $_GET["url"]);
+
+    /* Chamando classe Usuário */
+    include "classes/usuario.class.php";
+    $classeUsuario = new Usuario();
+
+    session_start();
+
+    $classeUsuario->idUsuario = $_SESSION["id_usuario_ab"];
     
     include "classes/capitulo.class.php";
     $classeCapitulo = new Capitulo();
@@ -56,7 +64,15 @@
         <!-- Cabeçalho -->
         <?php
 
-        include "partes/cabecalho.php";
+        if(isset($_SESSION["id_usuario_ab"])){
+
+            include "partes/cabecalho_logado.php";
+
+        }else{
+
+            include "partes/cabecalho.php";
+
+        }
         
         ?>
         <!-- /Cabeçalho -->

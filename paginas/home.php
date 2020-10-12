@@ -2,6 +2,22 @@
 
 <head>
 
+    <?php
+    
+    /* Chamando classe Usuário */
+    include "classes/usuario.class.php";
+    $classeUsuario = new Usuario();
+
+    session_start();
+
+    if(isset($_SESSION["id_usuario_ab"])){
+
+        $classeUsuario->idUsuario = $_SESSION["id_usuario_ab"];
+
+    }
+    
+    ?>
+
     <title>Anotações Bíblicas</title>
 
     <meta charset="UTF-8">
@@ -32,7 +48,15 @@
         <!-- Cabeçalho -->
         <?php
 
-        include "partes/cabecalho.php";
+        if(isset($_SESSION["id_usuario_ab"])){
+
+            include "partes/cabecalho_logado.php";
+
+        }else{
+
+            include "partes/cabecalho.php";
+
+        }
         
         ?>
         <!-- /Cabeçalho -->

@@ -1,0 +1,24 @@
+#logo{
+
+    margin: 3px;
+    cursor: pointer;
+
+}
+
+#iconeNotificacao{
+
+    margin-top: 27px;
+
+}
+
+#avatarMenu{
+
+    margin-top: 24px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+
+}
