@@ -28,3 +28,26 @@
     text-decoration: none;
 
 }
+
+/* Icones do conteúdo do menu */
+#iconesMenu{
+
+    margin-top: -3px;
+    margin-right: 10px;
+
+}
+
+#iconesMenuSair{
+
+    margin-top: -3px;
+    margin-right: 10px;
+    transform: rotate(180deg);
+
+}
+
+/* Icone do menu individual */
+#iconeMenu{
+
+    cursor: pointer;
+
+}

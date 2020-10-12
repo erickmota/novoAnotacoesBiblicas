@@ -3,6 +3,15 @@
 <script>
 
 $(function () {
+    $('.menuPrincipal').popover({
+    html: true,
+    content: function() {
+            return $('#menuPrincipal-popover').html();
+        }
+    })
+})
+
+$(function () {
   $('.menuAvatar').popover({
     html: true,
     content: function() {
@@ -69,9 +78,12 @@ $(function () {
                             <!-- Menu do avatar -->
                             <div id="menuAvatar-popover" style="display: none">
                         
-                                <a id="linkMenu" href="#"><p class="text-center border-bottom pb-3 mt-3 pr-3 pl-3">Meu perfil</p></a>
-                                <a id="linkMenu" href="#"><p class="text-center border-bottom pb-3 pr-3 pl-3">Configurações</p></a>
-                                <a id="linkMenu" href="./php/deslogar.php"><p class="text-center pr-3 pl-3">Sair</p></a>
+                                <a id="linkMenu" href="#"><p class="border-bottom pb-3 mt-3 pr-3 pl-3"><img id="iconesMenu" src="./img/iconeLogin.png" width="20px"> Meu Perfil</p></a>
+                                <a id="linkMenu" href="#"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/configuracao.png" width="20px"> Configurações</p></a>
+                                <a id="linkMenu" href="./php/deslogar.php"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenuSair" src="./img/entrar.png" width="20px"> Sair</p></a>
+                                <a id="linkMenu" href="#blocoVelhoTestamento"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/marcador.png" width="20px"> Marcos 1</p></a>
+                                <a id="linkMenu" href="#blocoVelhoTestamento"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/marcador.png" width="20px"> 1 Tessalonicenses 4</p></a>
+                                <a id="linkMenu" href="#blocoVelhoTestamento"><p class="pr-3 pl-3"><img id="iconesMenu" src="./img/marcador.png" width="20px"> Rute 2</p></a>
                         
                             </div>
 
@@ -85,7 +97,19 @@ $(function () {
 
                     <div class="col">
 
-                        <img class="mt-3 float-right" src="img/menu.png" width="40px">
+                        <img id="iconeMenu" class="mt-3 float-right menuPrincipal" src="img/menu.png" width="40px" data-toggle="popover" data-placement="bottom">
+
+                        <!-- Menu principal -->
+                        <div id="menuPrincipal-popover" style="display: none">
+                        
+                            <a id="linkMenu" href=""><p class="border-bottom pb-3 mt-3 pr-3 pl-3"><img id="iconesMenu" src="./img/casa.png" width="20px"> Início</p></a>
+                            <a id="linkMenu" href="#blocoNovoTestamento"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/novoTestamento.png" width="20px"> Novo Testamento</p></a>
+                            <a id="linkMenu" href="#blocoVelhoTestamento"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/velhoTestamento.png" width="20px"> Velho Testamento</p></a>
+                            <a id="linkMenu" href="#blocoVelhoTestamento"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/anotacao.png" width="20px"> Minhas Anotações</p></a>
+                            <a id="linkMenu" href="#blocoVelhoTestamento"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/marcacao.png" width="20px"> Minhas Marcações</p></a>
+                            <a id="linkMenu" href="#blocoVelhoTestamento"><p class="pr-3 pl-3"><img id="iconesMenu" src="./img/historico.png" width="20px"> Histórico</p></a>
+                    
+                        </div>
 
                     </div>
 
