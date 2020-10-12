@@ -66,17 +66,12 @@ $(function () {
 
                             <img id="avatarMenu" class="float-right menuAvatar" src="img/avatar/<?php echo $classeUsuario->retornaImagem() ?>" data-toggle="popover" data-placement="bottom">
 
-                            <!-- <ul id="menuAvatar-popover" style="display: none">
-                                <a href="#" >Edit Event</a>
-                                <a href="#" >Invite Members</a>
-                                <a href="#" >Delete Event</a>
-                            </ul> -->
-
+                            <!-- Menu do avatar -->
                             <div id="menuAvatar-popover" style="display: none">
                         
-                                <p class="text-center border-bottom pb-3 mt-3 pr-3 pl-3">Meu perfil</p>
-                                <p class="text-center border-bottom pb-3 pr-3 pl-3">Configurações</p>
-                                <a href="./php/deslogar.php"><p class="text-center pr-3 pl-3">Sair</p></a>
+                                <a id="linkMenu" href="#"><p class="text-center border-bottom pb-3 mt-3 pr-3 pl-3">Meu perfil</p></a>
+                                <a id="linkMenu" href="#"><p class="text-center border-bottom pb-3 pr-3 pl-3">Configurações</p></a>
+                                <a id="linkMenu" href="./php/deslogar.php"><p class="text-center pr-3 pl-3">Sair</p></a>
                         
                             </div>
 

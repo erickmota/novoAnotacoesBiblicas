@@ -12,7 +12,11 @@
 
     session_start();
 
-    $classeUsuario->idUsuario = $_SESSION["id_usuario_ab"];
+    if(isset($_SESSION["id_usuario_ab"])){
+
+        $classeUsuario->idUsuario = $_SESSION["id_usuario_ab"];
+
+    }
     
     include "classes/capitulo.class.php";
     $classeCapitulo = new Capitulo();

@@ -43,6 +43,20 @@
 
 <body>
 
+    <?php
+    
+    if(isset($_SESSION["id_usuario_ab"])){
+
+        echo "Logado";
+
+    }else{
+
+        echo "deslogado";
+
+    }
+    
+    ?>
+
     <div class="container-fluid">
         
         <!-- Cabeçalho -->
@@ -87,7 +101,7 @@
         <!-- /Verso do dia -->
 
         <!-- Novo Testamento -->
-        <div class="row justify-content-center mt-3">
+        <div id="blocoNovoTestamento" class="row justify-content-center mt-3">
 
             <div class="col-12 col-lg-9">
 
@@ -158,7 +172,7 @@
         <!-- /Novo Testamento -->
 
         <!-- Velho Testamento -->
-        <div class="row justify-content-center mt-3">
+        <div id="blocoVelhoTestamento" class="row justify-content-center mt-3">
 
             <div class="col-12 col-lg-9">
 
