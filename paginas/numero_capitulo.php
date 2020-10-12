@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <html>
 
 <head>
@@ -9,8 +15,6 @@
     /* Chamando classe Usuário */
     include "classes/usuario.class.php";
     $classeUsuario = new Usuario();
-
-    session_start();
 
     if(isset($_SESSION["id_usuario_ab"])){
 

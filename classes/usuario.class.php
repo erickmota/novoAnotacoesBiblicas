@@ -66,7 +66,7 @@ public function login(){
 
         session_start();
 
-        session_unset($_SESSION["id_usuario_ab"]);
+        session_destroy();
 
         echo "<script>alert ('E-mail ou senha incorretos!'); history.back();</script>";
 
@@ -94,6 +94,8 @@ public function deslogar(){
     session_start();
 
     session_unset($_SESSION["id_usuario_ab"]);
+
+    session_destroy();
     
 }
     
