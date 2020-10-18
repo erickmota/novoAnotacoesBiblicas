@@ -15,6 +15,8 @@ public function login(){
 
     include 'conexao.class.php';
 
+    $idEncode = base64_encode($this->idUsuario);
+    $emailEncode = base64_encode($this->emailUsuario);
     $senhaEncode = base64_encode($this->senhaUsuario);
 
     $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE email='$this->emailUsuario' and senha='$senhaEncode'");
@@ -38,9 +40,11 @@ public function login(){
             
         }else{
 
-            session_start();
+            $idEncode = base64_encode($id);
 
-            $_SESSION["id_usuario_ab"] = $id;
+            setcookie("id_usuario_ab", $idEncode, time() + 7 * (24 * 3600), "/");
+            setcookie("email_usuario_ab", $emailEncode, time() + 7 * (24 * 3600), "/");
+            setcookie("senha_usuario_ab", $senhaEncode, time() + 7 * (24 * 3600), "/");
 
             if($login == 0){
                 
@@ -56,7 +60,7 @@ public function login(){
                 
                 $sql2 = mysqli_query($conn, "UPDATE usuarios SET login='$loginPlus' WHERE id='$id'");
                 
-                echo "<script>window.location='../'</script>";
+                /* echo "<script>window.location='../'</script>"; */
                 
             }
 
@@ -64,9 +68,9 @@ public function login(){
 
     }else{
 
-        session_start();
-
-        session_destroy();
+        setcookie("id_usuario_ab", null, -1, "/");
+        setcookie("email_usuario_ab", null, -1, "/");
+        setcookie("senha_usuario_ab", null, -1, "/");
 
         echo "<script>alert ('E-mail ou senha incorretos!'); history.back();</script>";
 
@@ -78,8 +82,11 @@ public function login(){
 public function retornaImagem(){
         
     include 'conexao.class.php';
+
+    $idDecode = base64_decode($this->idUsuario);
+    $emailDecode = base64_decode($this->emailUsuario);
     
-    $sql = mysqli_query($conn, "SELECT img FROM usuarios WHERE id='$this->idUsuario'");
+    $sql = mysqli_query($conn, "SELECT img FROM usuarios WHERE email='$emailDecode' and senha='$this->senhaUsuario' and id='$idDecode'");
     $linha = mysqli_fetch_array($sql);
     
     $img = $linha["img"];
@@ -91,12 +98,53 @@ public function retornaImagem(){
 /* Função para deslogar usuário */
 public function deslogar(){
         
-    session_start();
-
-    session_unset($_SESSION["id_usuario_ab"]);
-
-    session_destroy();
+    setcookie("id_usuario_ab", null, -1, "/");
+    setcookie("email_usuario_ab", null, -1, "/");
+    setcookie("senha_usuario_ab", null, -1, "/");
     
+}
+
+/* Retorna dados do usuário pelo ID
+Usando para:
+*Retornar passagens marcadas */
+public function retornaPassagensMarcadas(){
+
+    include 'conexao.class.php';
+
+    $idDecode = base64_decode($this->idUsuario);
+    $emailDecode = base64_decode($this->emailUsuario);
+
+    $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE email='$emailDecode' and senha='$this->senhaUsuario' and id='$idDecode'");
+    while ($row = mysqli_fetch_assoc($sql)){
+            
+        $array[] = $row;
+        
+    }
+
+    return $array;
+
+}
+
+public function verificaExistenciaUsuario(){
+
+    include 'conexao.class.php';
+
+    $idDecode = base64_decode($this->idUsuario);
+    $emailDecode = base64_decode($this->emailUsuario);
+
+    $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE email='$emailDecode' and senha='$this->senhaUsuario' and id='$idDecode'");
+    $qtd = mysqli_num_rows($sql);
+
+    if($qtd < 1){
+
+        return false;
+
+    }else{
+
+        return true;
+
+    }
+
 }
     
 }

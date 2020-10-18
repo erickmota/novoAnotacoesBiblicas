@@ -1,9 +1,3 @@
-<?php
-
-session_start();
-
-?>
-
 <html>
 
 <head>
@@ -14,9 +8,11 @@ session_start();
     include "classes/usuario.class.php";
     $classeUsuario = new Usuario();
 
-    if(isset($_SESSION["id_usuario_ab"])){
+    if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
 
-        $classeUsuario->idUsuario = $_SESSION["id_usuario_ab"];
+        $classeUsuario->idUsuario = $_COOKIE["id_usuario_ab"];
+        $classeUsuario->emailUsuario = $_COOKIE["email_usuario_ab"];
+        $classeUsuario->senhaUsuario = $_COOKIE["senha_usuario_ab"];
 
     }
     
@@ -52,10 +48,10 @@ session_start();
         <!-- Cabeçalho -->
         <?php
 
-        if(isset($_SESSION["id_usuario_ab"])){
+        if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"]) && $classeUsuario->verificaExistenciaUsuario() == true){
 
             include "partes/cabecalho_logado.php";
-
+            
         }else{
 
             include "partes/cabecalho.php";

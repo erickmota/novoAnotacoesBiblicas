@@ -1,5 +1,19 @@
 <?php
 
+/* session_start(); */
+
+/* if(isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
+
+    if(!isset($_SESSION["id_usuario_ab"])){
+
+        header("location: php/login_automatico.php");
+
+        echo "<script>window.location='php/login_automatico.php'</script>";
+
+    }
+
+} */
+
 if(isset($_GET["url"])){
 
     $explode = explode("/", $_GET["url"]);
@@ -30,6 +44,24 @@ if(isset($_GET["url"])){
     }
 
 }else{
+
+    /* if(isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
+
+        if(!isset($_SESSION["id_usuario_ab"])){
+
+            header("location: php/login_automatico.php");
+
+        }else{
+
+            include "paginas/home.php";
+
+        }
+
+    }else{
+
+        include "paginas/home.php";
+
+    } */
 
     include "paginas/home.php";
 

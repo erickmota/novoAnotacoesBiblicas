@@ -65,7 +65,7 @@ $(function () {
 
                         ?>
 
-                            <img onclick="window.location='login'" id="avatarMenu" class="float-right" src="img/avatar/semImagem.jpg">
+                            <img id="avatarMenu" class="float-right menuAvatar" src="img/avatar/semImagem.jpg" data-toggle="popover" data-placement="bottom">
 
                         <?php
 
@@ -75,23 +75,36 @@ $(function () {
 
                             <img id="avatarMenu" class="float-right menuAvatar" src="img/avatar/<?php echo $classeUsuario->retornaImagem() ?>" data-toggle="popover" data-placement="bottom">
 
-                            <!-- Menu do avatar -->
-                            <div id="menuAvatar-popover" style="display: none">
-                        
-                                <a id="linkMenu" href="#"><p class="border-bottom pb-3 mt-3 pr-3 pl-3"><img id="iconesMenu" src="./img/iconeLogin.png" width="20px"> Meu Perfil</p></a>
-                                <a id="linkMenu" href="#"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/configuracao.png" width="20px"> Configurações</p></a>
-                                <a id="linkMenu" href="./php/deslogar.php"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenuSair" src="./img/entrar.png" width="20px"> Sair</p></a>
-                                <a id="linkMenu" href="#blocoVelhoTestamento"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/marcador.png" width="20px"> Marcos 1</p></a>
-                                <a id="linkMenu" href="#blocoVelhoTestamento"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/marcador.png" width="20px"> 1 Tessalonicenses 4</p></a>
-                                <a id="linkMenu" href="#blocoVelhoTestamento"><p class="pr-3 pl-3"><img id="iconesMenu" src="./img/marcador.png" width="20px"> Rute 2</p></a>
-                        
-                            </div>
-
                         <?php
 
                         }
                         
                         ?>
+
+                        <!-- Menu do avatar -->
+                        <div id="menuAvatar-popover" style="display: none">
+                        
+                            <a id="linkMenu" href="#"><p class="border-bottom pb-3 mt-3 pr-3 pl-3"><img id="iconesMenu" src="./img/iconeLogin.png" width="20px"> Meu Perfil</p></a>
+                            <a id="linkMenu" href="#"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/configuracao.png" width="20px"> Configurações</p></a>
+                            <a id="linkMenu" href="./php/deslogar.php"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenuSair" src="./img/entrar.png" width="20px"> Sair</p></a>
+
+                            <?php
+                            
+                            foreach($classeUsuario->retornaPassagensMarcadas() as $arrPassagensMarcadas){
+                            
+                            ?>
+
+                            <a id="linkMenu" href="<?php echo urlencode($arrPassagensMarcadas["livro1"])."/{$arrPassagensMarcadas["capitulo1"]}/{$arrPassagensMarcadas["versao"]}" ?>"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/marcador.png" width="20px"> <?php echo "{$arrPassagensMarcadas["livro1"]} {$arrPassagensMarcadas["capitulo1"]}" ?></p></a>
+                            <a id="linkMenu" href="<?php echo urlencode($arrPassagensMarcadas["livro2"])."/{$arrPassagensMarcadas["capitulo2"]}/{$arrPassagensMarcadas["versao"]}" ?>"><p class="border-bottom pb-3 pr-3 pl-3"><img id="iconesMenu" src="./img/marcador.png" width="20px"> <?php echo "{$arrPassagensMarcadas["livro2"]} {$arrPassagensMarcadas["capitulo2"]}" ?></p></a>
+                            <a id="linkMenu" href="<?php echo urlencode($arrPassagensMarcadas["livro3"])."/{$arrPassagensMarcadas["capitulo3"]}/{$arrPassagensMarcadas["versao"]}" ?>"><p class="pr-3 pl-3"><img id="iconesMenu" src="./img/marcador.png" width="20px"> <?php echo "{$arrPassagensMarcadas["livro3"]} {$arrPassagensMarcadas["capitulo3"]}" ?></p></a>
+
+                            <?php
+                            
+                            }
+                            
+                            ?>
+                
+                        </div>
 
                     </div>
 

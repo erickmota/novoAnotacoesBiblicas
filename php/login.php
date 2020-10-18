@@ -11,4 +11,6 @@ $classeUsuario->senhaUsuario = $senha;
 
 $classeUsuario->login();
 
+echo "<script>window.location='../'</script>";
+
 ?>
