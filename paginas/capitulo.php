@@ -22,6 +22,18 @@
     include "classes/capitulo.class.php";
     $classeCapitulo = new Capitulo();
 
+    /* Chamando classe Comentario */
+    include "classes/comentario.class.php";
+    $classeAnotacao = new Comentario();
+
+    if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
+
+        $classeAnotacao->idUsuario = $_COOKIE["id_usuario_ab"];
+        $classeAnotacao->livro = $explode[0];
+        $classeAnotacao->capitulo = $explode[1];
+
+    }
+
     /* Recebendo o ID do livro */
     $classeCapitulo->livro = $explode[0];
     $idLivro = $classeCapitulo->retornarIdLivro();
@@ -158,15 +170,99 @@
                 
                 ?>
 
-                <p id="texto_capitulo">
+                    <?php
+                    
+                    if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
 
-                <?php
-                
-                echo "<font id='numero_verso'>{$arrCapitulo["ver_versiculo"]}</font> {$arrCapitulo["ver_texto"]}";
-                
-                ?>
+                        $classeAnotacao->numeroVersiculo = $arrCapitulo["ver_versiculo"];
 
-                </p>
+                        if($classeAnotacao->retornaAnotacaoPorVerso() != false OR $classeAnotacao->retornaAnotacaoSguindo() != false){
+
+                            $bordaVerso = "border-left border-danger pl-2 bg-light";
+
+                        }else{
+
+                            $bordaVerso = "";
+
+                        }
+
+                    }
+                    
+                    ?>
+
+                    <div class="<?php if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){ echo $bordaVerso; } ?>">
+
+                        <p id="texto_capitulo">
+                        
+                        <font id='numero_verso'><?php echo $arrCapitulo["ver_versiculo"]; ?></font> <?php echo $arrCapitulo["ver_texto"]; ?>
+
+                        </p>
+
+                        <?php
+                        
+                        if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
+
+                            if($classeAnotacao->retornaAnotacaoPorVerso() != false){
+
+                            ?>
+
+                                <p id="" class="text-danger pb-1">
+
+                                    <?php
+                                    
+                                    echo $classeAnotacao->retornaAnotacaoPorVerso();
+                                    
+                                    ?>
+
+                                </p>
+
+                            <?php
+                                
+                            }
+                    
+                        }
+                        
+                        ?>
+
+                        <p>
+
+                            <?php
+
+                            if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
+
+                                if($classeAnotacao->retornaAnotacaoSguindo() != false){
+
+                                    foreach($classeAnotacao->retornaAnotacaoSguindo() as $arrComentarioSeguindo){
+
+                                        if($classeUsuario->retornaImagem() == NULL){
+
+                                            ?>
+
+                                                <img class="border border-danger" id="avatarAnotacao" src="./img/avatar/semImagem.jpg">
+
+                                            <?php
+
+                                        }else{
+
+                                            ?>
+
+                                                <img class="border border-danger" id="avatarAnotacao" src="./img/avatar/<?php echo $arrComentarioSeguindo["img"]; ?>">
+
+                                            <?php
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+
+                            ?>
+
+                        </p>
+
+                    </div>
 
                 <?php
                 

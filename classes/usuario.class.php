@@ -137,6 +137,12 @@ public function verificaExistenciaUsuario(){
 
     if($qtd < 1){
 
+        setcookie("id_usuario_ab", null, -1, "/");
+        setcookie("email_usuario_ab", null, -1, "/");
+        setcookie("senha_usuario_ab", null, -1, "/");
+
+        echo "<script>window.location=''</script>";
+
         return false;
 
     }else{
