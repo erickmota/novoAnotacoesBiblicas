@@ -45,7 +45,7 @@ public function retornaAnotacaoSguindo(){
 
     $idDecode = base64_decode($this->idUsuario);
 
-    $sql = mysqli_query($conn, "SELECT usuarios.* FROM usuarios INNER JOIN comentarios ON comentarios.id_usuario=usuarios.id INNER JOIN seguir ON usuarios.id=seguir.id_seguindo WHERE seguir.id_seguidor='$idDecode' AND comentarios.livro='$this->livro' AND comentarios.capitulo='$this->capitulo' AND comentarios.numero_versiculo='$this->numeroVersiculo'");
+    $sql = mysqli_query($conn, "SELECT usuarios.* FROM usuarios INNER JOIN comentarios ON comentarios.id_usuario=usuarios.id INNER JOIN seguir ON usuarios.id=seguir.id_seguindo WHERE seguir.id_seguidor='$idDecode' AND comentarios.livro='$this->livro' AND comentarios.capitulo='$this->capitulo' AND comentarios.numero_versiculo='$this->numeroVersiculo' AND comentarios.privacidade='publico'");
     $qtd = mysqli_num_rows($sql);
     while ($row = mysqli_fetch_assoc($sql)){
             
