@@ -210,11 +210,43 @@
 
                                     <?php
                                     
-                                    echo $classeAnotacao->retornaAnotacaoPorVerso();
+                                    $classeAnotacao->formataAnotacao($classeAnotacao->retornaAnotacaoPorVerso(), $arrCapitulo["ver_id"], "pequeno");
                                     
                                     ?>
 
                                 </p>
+
+                                    <!-- Janela Modal dos comentários que são muitos grandes -->
+                                    <div class="<?php echo "modal fade bd-modal-{$arrCapitulo["ver_id"]}-lg"; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">
+                                                    
+                                                    <?php echo "{$explode[0]} {$explode[1]}:{$arrCapitulo["ver_versiculo"]}"; ?>
+                                                    
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="text-left">
+
+                                                        <?php
+                                        
+                                                        $classeAnotacao->formataAnotacao($classeAnotacao->retornaAnotacaoPorVerso(), $arrCapitulo["ver_id"], "grande");
+                                                        
+                                                        ?>
+
+                                                    </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                             <?php
                                 
@@ -246,11 +278,52 @@
 
                                             ?>
 
-                                                <img class="border border-danger" id="avatarAnotacao" src="./img/avatar/<?php echo $arrComentarioSeguindo["img"]; ?>">
+                                                <img data-toggle='modal' data-target='.bd-modal-seguindo-<?php echo "{$arrComentarioSeguindo["id_c"]}" ?>-lg' class="border border-danger" id="avatarAnotacao" src="./img/avatar/<?php echo $arrComentarioSeguindo["img"]; ?>"> <!-- ! -->
 
                                             <?php
 
                                         }
+
+                                    }
+
+                                    foreach($classeAnotacao->retornaAnotacaoSguindo() as $arrComentarioSeguindo){
+
+                                        ?>
+
+                                        <!-- Janela Modal dos comentários que são muitos grandes -->
+                                        <div class="modal fade bd-modal-seguindo-<?php echo "{$arrComentarioSeguindo["id_c"]}" ?>-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">
+                                                    
+                                                    <img class="border mr-2" id="avatarAnotacaoModal" src="./img/avatar/<?php echo $arrComentarioSeguindo["img"]; ?>">
+                                                    <?php echo "{$arrComentarioSeguindo["nome"]} - {$explode[0]} {$explode[1]}:{$arrCapitulo["ver_versiculo"]}" ?>
+                                                    
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                    <div class="modal-body">
+                                                        <p class="text-left">
+
+                                                            <?php
+                                            
+                                                            $classeAnotacao->formataAnotacao($arrComentarioSeguindo["texto"], $arrCapitulo["ver_id"], "grande");
+                                                            
+                                                            ?>
+
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <?php
 
                                     }
 

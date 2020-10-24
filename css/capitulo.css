@@ -51,3 +51,15 @@
     margin-bottom: 5px;
 
 }
+
+#avatarAnotacaoModal{
+
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 5px;
+
+}
