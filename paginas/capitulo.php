@@ -242,7 +242,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ver Versículo</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -290,7 +290,7 @@
 
                                         ?>
 
-                                        <!-- Janela Modal dos comentários que são muitos grandes -->
+                                        <!-- Janela Modal dos comentários dos seguindos -->
                                         <div class="modal fade bd-modal-seguindo-<?php echo "{$arrComentarioSeguindo["id_c"]}" ?>-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
@@ -317,7 +317,92 @@
                                                         </p>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+                                                    <!-- Script em JS para realizar a mudança dos corações, quando uma
+                                                    usuários clicar em curtir ou descurtir -->
+                                                    <script>
+
+                                                    function mudarCoracao<?php echo $arrComentarioSeguindo["id_c"]; ?>(){
+
+                                                        var conteudoSrc = document.getElementById("coracao<?php echo $arrComentarioSeguindo['id_c']; ?>").src;
+
+                                                        if(conteudoSrc === "<?php include "php/link_paginas.php"; ?>img/coracao.png"){
+
+                                                            document.getElementById("coracao<?php echo $arrComentarioSeguindo['id_c']; ?>").src="img/coracaoVermelho.png";
+
+                                                        }else{
+
+                                                            document.getElementById("coracao<?php echo $arrComentarioSeguindo['id_c']; ?>").src="img/coracao.png";
+
+                                                        }
+
+                                                    }
+
+                                                    </script>
+
+                                                        <font id="qtdLike<?php echo $arrComentarioSeguindo['id_c']; ?>"><?php echo $classeAnotacao->retornaQtdLike($arrComentarioSeguindo["id_c"]); ?></font>
+
+                                                        <?php
+                                                        
+                                                        if($classeAnotacao->verificaLikeJaExecutado($arrComentarioSeguindo["id_c"]) == true){
+
+                                                            ?>
+
+                                                            <img style="cursor:pointer" id="coracao<?php echo $arrComentarioSeguindo['id_c']; ?>" onclick="<?php echo "mudarCoracao".$arrComentarioSeguindo['id_c']."()";?>" src="img/coracaoVermelho.png" width="35px">
+
+                                                            <?php
+
+                                                        }else{
+
+                                                            ?>
+
+                                                            <img style="cursor:pointer" id="coracao<?php echo $arrComentarioSeguindo['id_c']; ?>" onclick="<?php echo "mudarCoracao".$arrComentarioSeguindo['id_c']."()";?>" src="img/coracao.png" width="35px">
+
+                                                            <?php
+
+                                                        }
+                                                        
+                                                        ?>
+
+                                                        <!-- Script em JS com Ajax para realizar a alteração no BD, quando
+                                                        um usúario clicar em curtir -->
+                                                        <script type="text/javascript">
+                                                                                
+                                                        function insereLike<?php echo $arrComentarioSeguindo['id_c']; ?> (comentario) {
+
+                                                            $.ajax({
+
+                                                                type: "POST",
+                                                                dataType: "html",
+
+                                                                url: "php/enviarLike.php",
+
+                                                                beforeSend: function () {
+
+                                                                    $("#loading").html("<img class='imgLoading' src='img/loading.gif'>");
+
+                                                                },
+
+                                                                data: {comentario: comentario},
+
+                                                                success: function (msg) {
+
+                                                                    $("#qtdLike<?php echo $arrComentarioSeguindo['id_c']; ?>").html(msg)
+
+                                                                }
+
+                                                            });
+
+                                                        }
+
+                                                        $("#coracao<?php echo $arrComentarioSeguindo['id_c']; ?>").click(function(){
+
+                                                            insereLike<?php echo $arrComentarioSeguindo['id_c']; ?>(<?php echo $arrComentarioSeguindo['id_c']; ?>)
+
+                                                        });
+
+                                                        </script>
+
                                                     </div>
                                                 </div>
                                             </div>

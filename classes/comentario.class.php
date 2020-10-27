@@ -130,6 +130,74 @@ public function formataAnotacao($anotacao, $idVersiculo, $tamanho){
 
 }
 
+/* Retorna a quantidade de likes de um comentário */
+public function retornaQtdLike($idComentario){
+        
+    include 'conexao.class.php';
+    
+    $sql = mysqli_query($conn, "SELECT * FROM likes WHERE id_comentario=$idComentario");
+    $qtdSql = mysqli_num_rows($sql);
+    
+    return $qtdSql;
+    
+}
+
+/* Verificar se já existe like no comentário */
+public function verificaLikeJaExecutado($idComentario){
+        
+    include 'conexao.class.php';
+
+    $idDecode = base64_decode($this->idUsuario);
+    
+    $sql = mysqli_query($conn, "SELECT * FROM likes WHERE id_usuario=$idDecode AND id_comentario=$idComentario");
+    $qtdSql = mysqli_num_rows($sql);
+    
+    if($qtdSql > 0){
+        
+        return true;
+        
+    }else{
+        
+        return false;
+        
+    }
+    
+}
+
+public function insereLike($idComentario){
+        
+    include 'conexao.class.php';
+
+    $idDecode = base64_decode($this->idUsuario);
+    
+    $sql = mysqli_query($conn, "INSERT INTO likes (id_usuario, id_comentario) VALUES ($idDecode, $idComentario)");
+    
+    $sql2 = mysqli_query($conn, "SELECT likes FROM comentarios WHERE id=$idComentario");
+    $linha = mysqli_fetch_array($sql2);
+    
+    $like = $linha["likes"] + 1;
+    
+    $sql3 = mysqli_query($conn, "UPDATE comentarios SET likes=$like WHERE id=$idComentario");
+    
+}
+
+public function removeLike($idComentario){
+        
+    include 'conexao.class.php';
+
+    $idDecode = base64_decode($this->idUsuario);
+    
+    $sql = mysqli_query($conn, "DELETE FROM likes WHERE id_usuario=$idDecode AND id_comentario=$idComentario");
+    
+    $sql2 = mysqli_query($conn, "SELECT likes FROM comentarios WHERE id=$idComentario");
+    $linha = mysqli_fetch_array($sql2);
+    
+    $like = $linha["likes"] - 1;
+    
+    $sql3 = mysqli_query($conn, "UPDATE comentarios SET likes=$like WHERE id=$idComentario");
+    
+}
+
 }
 
 ?>
