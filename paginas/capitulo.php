@@ -194,7 +194,7 @@
 
                         <p id="texto_capitulo">
                         
-                        <font id='numero_verso'><?php echo $arrCapitulo["ver_versiculo"]; ?></font> <?php echo $arrCapitulo["ver_texto"]; ?>
+                        <span id='numero_verso'><?php echo $arrCapitulo["ver_versiculo"]; ?></span> <?php echo $arrCapitulo["ver_texto"]; ?>
 
                         </p>
 
@@ -340,7 +340,22 @@
 
                                                     </script>
 
-                                                        <font id="qtdLike<?php echo $arrComentarioSeguindo['id_c']; ?>"><?php echo $classeAnotacao->retornaQtdLike($arrComentarioSeguindo["id_c"]); ?></font>
+                                                    <script>
+
+                                                    $(function () {
+                                                        $('.numeroLikes<?php echo $arrComentarioSeguindo['id_c']; ?>').popover({
+                                                        trigger: 'hover',
+                                                        delay: { "show": 300, "hide": 100 },
+                                                        html: true,
+                                                        content: function() {
+                                                                return $("#quemDeuLike<?php echo $arrComentarioSeguindo['id_c']; ?>-popover").html();
+                                                            }
+                                                        })
+                                                    })
+
+                                                    </script>
+
+                                                        <span style="cursor: pointer" data-toggle="popover" data-placement="left" class="numeroLikes<?php echo $arrComentarioSeguindo['id_c']; ?>" id="qtdLike<?php echo $arrComentarioSeguindo['id_c']; ?>"><?php echo $classeAnotacao->retornaQtdLike($arrComentarioSeguindo["id_c"]); ?></span>
 
                                                         <?php
                                                         
@@ -377,17 +392,21 @@
 
                                                                 url: "php/enviarLike.php",
 
-                                                                beforeSend: function () {
+                                                                /* beforeSend: function () {
 
                                                                     $("#loading").html("<img class='imgLoading' src='img/loading.gif'>");
 
-                                                                },
+                                                                }, */
 
                                                                 data: {comentario: comentario},
 
                                                                 success: function (msg) {
 
                                                                     $("#qtdLike<?php echo $arrComentarioSeguindo['id_c']; ?>").html(msg)
+
+                                                                    setTimeout(function() {
+                                                                        retornaQuemDeuLike<?php echo $arrComentarioSeguindo['id_c']; ?>(<?php echo $arrComentarioSeguindo['id_c']; ?>);;
+                                                                    }, 100);
 
                                                                 }
 
@@ -397,7 +416,7 @@
 
                                                         $("#coracao<?php echo $arrComentarioSeguindo['id_c']; ?>").click(function(){
 
-                                                            insereLike<?php echo $arrComentarioSeguindo['id_c']; ?>(<?php echo $arrComentarioSeguindo['id_c']; ?>)
+                                                            insereLike<?php echo $arrComentarioSeguindo['id_c']; ?>(<?php echo $arrComentarioSeguindo['id_c']; ?>);
 
                                                         });
 
@@ -407,6 +426,70 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Apresentação dos nomes de todos os usuários
+                                        que curtiram o comentário -->
+                                        <div id="quemDeuLike<?php echo $arrComentarioSeguindo['id_c']; ?>-popover" style="display: none">
+
+                                            <?php
+                                            
+                                            if($classeAnotacao->retornaQuemDeuLike($arrComentarioSeguindo['id_c']) == false){
+
+                                                echo "<span class='text-black-50'>Nenhum like</span>";
+                                            
+                                            }else{
+                                            
+                                                foreach($classeAnotacao->retornaQuemDeuLike($arrComentarioSeguindo['id_c']) as $arrComent){
+
+                                                    echo $arrComent["nome"]."<br>";
+                                                
+                                                }
+                                            
+                                            }
+                                            
+                                            ?>
+
+                                        </div>
+
+                                        <!-- Script em JS com Ajax para realizar a alteração no BD, quando
+                                        um usúario clicar em curtir -->
+                                        <script type="text/javascript">
+                                                                
+                                        function retornaQuemDeuLike<?php echo $arrComentarioSeguindo['id_c']; ?> (comentario) {
+
+                                            $.ajax({
+
+                                                type: "POST",
+                                                dataType: "html",
+
+                                                url: "php/retornar_quem_deu_like.php",
+
+                                                /* beforeSend: function () {
+
+                                                    $("#loading<?php echo $arrComentarioSeguindo['id_c']; ?>").html("Aguardando");
+
+                                                }, */
+
+                                                data: {comentario: comentario},
+
+                                                success: function (msg) {
+                                                    
+                                                    $("#quemDeuLike<?php echo $arrComentarioSeguindo['id_c']; ?>-popover").html(msg)
+                                                    /* $("#loading<?php echo $arrComentarioSeguindo['id_c']; ?>").html(" ") */
+
+                                                }
+
+                                            });
+
+                                        }
+
+                                        /* $("#qtdLike<?php echo $arrComentarioSeguindo['id_c']; ?>").click(function(){
+
+                                            retornaQuemDeuLike<?php echo $arrComentarioSeguindo['id_c']; ?>(<?php echo $arrComentarioSeguindo['id_c']; ?>)
+
+                                        }); */
+
+                                        </script>
 
                                         <?php
 

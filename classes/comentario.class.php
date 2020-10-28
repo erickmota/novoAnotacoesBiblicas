@@ -164,6 +164,7 @@ public function verificaLikeJaExecutado($idComentario){
     
 }
 
+/* Insere Likes no BD */
 public function insereLike($idComentario){
         
     include 'conexao.class.php';
@@ -181,6 +182,7 @@ public function insereLike($idComentario){
     
 }
 
+/* Remove Likes do BD */
 public function removeLike($idComentario){
         
     include 'conexao.class.php';
@@ -196,6 +198,30 @@ public function removeLike($idComentario){
     
     $sql3 = mysqli_query($conn, "UPDATE comentarios SET likes=$like WHERE id=$idComentario");
     
+}
+
+public function retornaQuemDeuLike($idComentario){
+
+    include 'conexao.class.php';
+
+    $sql = mysqli_query($conn, "SELECT usuarios.nome FROM usuarios INNER JOIN likes ON usuarios.id=likes.id_usuario WHERE likes.id_comentario=$idComentario");
+    $qtd = mysqli_num_rows($sql);
+    while ($row = mysqli_fetch_assoc($sql)){
+            
+        $array[] = $row;
+        
+    }
+
+    if($qtd < 1){
+
+        return false;
+
+    }else{
+
+        return $array;
+
+    }
+
 }
 
 }
