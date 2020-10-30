@@ -135,3 +135,337 @@ $(function () {
     </div>
 
 </div>
+
+<img style="cursor: pointer;" id="iconeMarcadorAzul" data-toggle='modal' data-target='.bd-modal-anotacaoRapida-lg' class="shadow" src="img/marcadorAzul.png" width="50px">
+
+<!-- Janela Modal dos comentários que são muitos grandes -->
+<div class="modal fade bd-modal-anotacaoRapida-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+
+                <img class="mr-2" id="iconeAnotacaorapida" src="img/marcadorAzul.png" width="30px">
+                
+                Caderno Virtual
+                
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="row">
+
+                    <div class="col">
+
+                    <form>
+                        <div class="form-group">
+                            <label for="textoAnotacoesRapidas">Anotações Rápidas</label>
+
+                            <?php
+                            
+                            foreach($classeUsuario->retornaPassagensMarcadas() as $arrAnotacaoRapida){
+                            
+                            ?>
+
+                            <textarea class="form-control" id="textoAnotacoesRapidas" rows="3" placeholder="Faça anotações rápidas que só você poderá ver, como: lembrar de ler Mateus 5."><?php echo $arrAnotacaoRapida["anotacoesrapidas"]; ?></textarea>
+
+                            <?php
+                            
+                            }
+                            
+                            ?>
+
+                        </div>
+
+                        <button id="botaoEnviarAnotacaoRapida" type="button" class="btn btn-outline-success btn-sm float-right ml-4">Salvar anotação</button>
+
+                        <div id="areaIconeOk">
+
+                            <!-- <img class="float-right mt-1" src="img/ok.png" width="23px"> -->
+
+                        </div>
+                        
+                    </form>
+
+                    <script type="text/javascript">
+                                                                                
+                    function salvarAnotacaoRapida (anotacao) {
+
+                        $.ajax({
+
+                            type: "POST",
+                            dataType: "html",
+
+                            url: "php/salvar_anotacao_rapida.php",
+
+                            /* beforeSend: function () {
+
+                                $("#loading").html("<img class='imgLoading' src='img/loading.gif'>");
+
+                            }, */
+
+                            data: {anotacao: anotacao},
+
+                            success: function (msg) {
+
+                                $("#areaIconeOk").html(msg);
+                                $("#textoAnotacoesRapidas").addClass("is-valid");
+
+                                setTimeout(function() {
+                                    $("#areaIconeOk").html("");
+                                    $("#textoAnotacoesRapidas").removeClass("is-valid");;
+                                }, 3000);
+
+                            }
+
+                        });
+
+                    }
+
+                    $("#botaoEnviarAnotacaoRapida").click(function(){
+
+                        var anotacao = document.getElementById("textoAnotacoesRapidas").value;
+
+                        salvarAnotacaoRapida(anotacao);
+
+                    });
+
+                    </script>
+
+                    </div>
+
+                </div>
+
+                <?php
+                
+                if(isset($controlePagina) && $controlePagina == "capitulo"){
+                
+                ?>
+
+                <div class="row">
+
+                    <div class="col">
+
+                        Marcar Passagem<br>
+                        <small class="text-muted">Clique em uma posição para marcar a passagem atual</small>
+
+                    </div>
+
+                </div>
+
+                <div class="row bg-light p-3 mt-2">
+
+                    <?php
+                            
+                        foreach($classeUsuario->retornaPassagensMarcadas() as $arrPassagensMarcadas){
+                            
+                    ?>
+
+                    <div class="col-6 col-sm-4 text-center">
+
+                        <?php
+                        
+                        if($arrPassagensMarcadas["livro1"] == urldecode($explode[0]) && $arrPassagensMarcadas["capitulo1"] == $explode[1]){
+                        
+                        ?>
+
+                        <img src="img/marcador.png"><br>
+                        <span class="text-warning" id="nomePassagemMarcador1">(<?php echo "{$arrPassagensMarcadas["livro1"]} {$arrPassagensMarcadas["capitulo1"]}" ?>)</span>
+
+                        <?php
+                        
+                        }else{
+                        
+                        ?>
+
+                        <img onclick="window.location='php/salvar_passagem.php?posicao=1&livro=<?php echo $explode[0] ?>&capitulo=<?php echo $explode[1] ?>&versao=<?php echo $explode[2] ?>'" onmouseover="mudarMarcador(1)" onmouseout="voltarMarcador(1)" id="iconeMarcadorBranco1" src="img/marcadorBranco1.png"><br>
+                        <span id="nomePassagemMarcador1">(<?php echo "{$arrPassagensMarcadas["livro1"]} {$arrPassagensMarcadas["capitulo1"]}" ?>)</span>
+
+                        <?php
+                        
+                        }
+                        
+                        ?>
+
+                    </div>
+
+                    <div class="col-6 col-sm-4 text-center">
+
+                        <?php
+                        
+                        if($arrPassagensMarcadas["livro2"] == urldecode($explode[0]) && $arrPassagensMarcadas["capitulo2"] == $explode[1]){
+                        
+                        ?>
+
+                        <img src="img/marcador.png"><br>
+                        <span class="text-warning" id="nomePassagemMarcador2">(<?php echo "{$arrPassagensMarcadas["livro2"]} {$arrPassagensMarcadas["capitulo2"]}" ?>)</span>
+
+                        <?php
+                        
+                        }else{
+                        
+                        ?>
+
+                        <img onclick="window.location='php/salvar_passagem.php?posicao=2&livro=<?php echo $explode[0] ?>&capitulo=<?php echo $explode[1] ?>&versao=<?php echo $explode[2] ?>'" onmouseover="mudarMarcador(2)" onmouseout="voltarMarcador(2)" id="iconeMarcadorBranco2" src="img/marcadorBranco2.png"><br>
+                        <span id="nomePassagemMarcador2">(<?php echo "{$arrPassagensMarcadas["livro2"]} {$arrPassagensMarcadas["capitulo2"]}" ?>)</span>
+
+                        <?php
+                        
+                        }
+                        
+                        ?>
+
+                    </div>
+
+                    <div class="col-12 col-sm-4 text-center">
+
+                        <?php
+                        
+                        if($arrPassagensMarcadas["livro3"] == urldecode($explode[0]) && $arrPassagensMarcadas["capitulo3"] == $explode[1]){
+                        
+                        ?>
+
+                        <img src="img/marcador.png"><br>
+                        <span class="text-warning" id="nomePassagemMarcador3">(<?php echo "{$arrPassagensMarcadas["livro3"]} {$arrPassagensMarcadas["capitulo3"]}" ?>)</span>
+
+                        <?php
+                        
+                        }else{
+                        
+                        ?>
+
+                        <img onclick="window.location='php/salvar_passagem.php?posicao=3&livro=<?php echo $explode[0] ?>&capitulo=<?php echo $explode[1] ?>&versao=<?php echo $explode[2] ?>'" onmouseover="mudarMarcador(3)" onmouseout="voltarMarcador(3)" id="iconeMarcadorBranco3" src="img/marcadorBranco3.png"><br>
+                        <span id="nomePassagemMarcador3">(<?php echo "{$arrPassagensMarcadas["livro3"]} {$arrPassagensMarcadas["capitulo3"]}" ?>)</span>
+
+                        <?php
+                        
+                        }
+                        
+                        ?>
+
+                    </div>
+
+                    <?php
+                            
+                        }
+                            
+                    ?>
+
+                    <script>
+
+                        function mudarMarcador(posicao){
+
+                            mark = document.getElementById("iconeMarcadorBranco"+posicao);
+
+                            mark.src="img/marcador.png";
+                            $("#nomePassagemMarcador"+posicao).addClass("text-warning");
+
+                        }
+
+                        function voltarMarcador(posicao){
+
+                            mark = document.getElementById("iconeMarcadorBranco"+posicao);
+
+                            mark.src="img/marcadorBranco"+posicao+".png";
+                            $("#nomePassagemMarcador"+posicao).removeClass("text-warning");
+
+                        }
+
+                    </script>
+
+                </div>
+
+                <div class="row p-3 mt-2">
+
+                    <div class="col text-center">
+
+                        <small class="text-muted">O Modo Leitura permite você a ler o capítulo atual, sem comentários ou marcação</small><br><br>
+                        <button type="button" class="btn btn-primary"> <img class="mr-2" src="img/oculos.png" width="35px"> Ativar Modo Leitura</button>
+                        
+
+                    </div>
+
+                </div>
+
+                <?php
+                
+                }else{
+                
+                ?>
+
+                <div class="row">
+
+                <div class="col">
+
+                    Marcar Passagem<br>
+                    <small class="text-info">Você precisa estar lendo um capítulo para marcar a passagem</small>
+
+                </div>
+
+                </div>
+
+                <div class="row bg-light p-3 mt-2">
+
+                <?php
+                            
+                foreach($classeUsuario->retornaPassagensMarcadas() as $arrPassagensMarcadas){
+                            
+                ?>
+
+                <div class="col-6 col-sm-4 text-center">
+
+                    <img style="opacity: 0.5" src="img/marcadorBranco1.png"><br>
+                    <span class="text-muted" id="nomePassagemMarcador1">(<?php echo "{$arrPassagensMarcadas["livro1"]} {$arrPassagensMarcadas["capitulo1"]}" ?>)</span>
+
+                </div>
+
+                <div class="col-6 col-sm-4 text-center">
+
+                    <img style="opacity: 0.5" src="img/marcadorBranco2.png"><br>
+                    <span class="text-muted" id="nomePassagemMarcador2">(<?php echo "{$arrPassagensMarcadas["livro2"]} {$arrPassagensMarcadas["capitulo2"]}" ?>)</span>
+
+                </div>
+
+                <div class="col-12 col-sm-4 text-center">
+
+                    <img style="opacity: 0.5" src="img/marcadorBranco3.png"><br>
+                    <span class="text-muted" id="nomePassagemMarcador3">(<?php echo "{$arrPassagensMarcadas["livro3"]} {$arrPassagensMarcadas["capitulo3"]}" ?>)</span>
+
+                </div>
+
+                <?php
+                            
+                }
+                            
+                ?>
+
+                </div>
+
+                <div class="row p-3 mt-2">
+
+                <div class="col text-center">
+
+                    <small class="text-info">Você precisa estar lendo um capítulo para ativar o Modo Leitura</small><br><br>
+                    <button type="button" class="btn btn-primary" disabled> <img class="mr-2" src="img/oculos.png" width="35px"> Ativar Modo Leitura</button>
+                    
+
+                </div>
+
+                </div>
+
+                <?php
+                
+                }
+                
+                ?>
+
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Ver Versículo</button>
+            </div> -->
+        </div>
+    </div>
+</div>

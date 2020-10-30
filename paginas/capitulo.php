@@ -81,6 +81,12 @@
 
     </script>
 
+    <?php
+    
+    $controlePagina = "capitulo";
+    
+    ?>
+
 </head>
 
 <body>
@@ -193,8 +199,28 @@
                     <div class="<?php if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){ echo $bordaVerso; } ?>">
 
                         <p id="texto_capitulo">
+
+                        <?php
                         
-                        <span id='numero_verso'><?php echo $arrCapitulo["ver_versiculo"]; ?></span> <?php echo $arrCapitulo["ver_texto"]; ?>
+                        if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
+                        
+                        ?>
+                        
+                        <span id='numero_verso'><?php echo $arrCapitulo["ver_versiculo"]; ?></span> <span style="background-color:#<?php echo $classeAnotacao->retornaMarcacao() ?>"><?php echo $arrCapitulo["ver_texto"]; ?></span>
+
+                        <?php
+                        
+                        }else{
+                        
+                        ?>
+
+                        <span id='numero_verso'><?php echo $arrCapitulo["ver_versiculo"]; ?></span> <span><?php echo $arrCapitulo["ver_texto"]; ?></span>
+
+                        <?php
+                        
+                        }
+                        
+                        ?>
 
                         </p>
 

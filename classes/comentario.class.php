@@ -200,6 +200,7 @@ public function removeLike($idComentario){
     
 }
 
+/* Retorna as pessoas que deram like no comentário */
 public function retornaQuemDeuLike($idComentario){
 
     include 'conexao.class.php';
@@ -219,6 +220,31 @@ public function retornaQuemDeuLike($idComentario){
     }else{
 
         return $array;
+
+    }
+
+}
+
+/* Retorna as passagens marcadas */
+public function retornaMarcacao(){
+
+    include "conexao.class.php";
+
+    $idDecode = base64_decode($this->idUsuario);
+
+    $sql = mysqli_query($conn, "SELECT cor FROM marcacoes WHERE id_usuario=$idDecode AND livro='$this->livro' AND capitulo='$this->capitulo' AND versiculo=$this->numeroVersiculo");
+    $qtd = mysqli_num_rows($sql);
+    $row = mysqli_fetch_array($sql);
+
+    $cor = $row["cor"];
+
+    if($qtd < 1){
+
+        return null;
+
+    }else{
+
+        return $cor;
 
     }
 

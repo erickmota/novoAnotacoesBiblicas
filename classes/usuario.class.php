@@ -106,7 +106,8 @@ public function deslogar(){
 
 /* Retorna dados do usuário pelo ID
 Usando para:
-*Retornar passagens marcadas */
+*Retornar passagens marcadas
+*Retornar Anotação Rápida do usuário */
 public function retornaPassagensMarcadas(){
 
     include 'conexao.class.php';
@@ -150,6 +151,16 @@ public function verificaExistenciaUsuario(){
         return true;
 
     }
+
+}
+
+public function salvarAnotacaoRapida($texto){
+
+    include 'conexao.class.php';
+
+    $idDecode = base64_decode($this->idUsuario);
+
+    $sql = mysqli_query($conn, "UPDATE usuarios SET anotacoesrapidas='$texto' WHERE id='$idDecode'") or die("Erro Anotações Rápidas");
 
 }
     
