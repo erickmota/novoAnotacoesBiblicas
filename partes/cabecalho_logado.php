@@ -383,8 +383,28 @@ $(function () {
                     <div class="col text-center">
 
                         <small class="text-muted">O Modo Leitura permite você a ler o capítulo atual, sem comentários ou marcação</small><br><br>
-                        <button type="button" class="btn btn-primary"> <img class="mr-2" src="img/oculos.png" width="35px"> Ativar Modo Leitura</button>
+
+                        <?php
                         
+                        if(isset($explode[3])){
+
+                        ?>
+
+                        <button onclick="window.location='<?php echo $explode[0].'/'.$explode[1].'/'.$explode[2]; ?>'" type="button" class="btn btn-danger"> <img class="mr-2" src="img/oculos.png" width="35px"> Desativar Modo Leitura</button>
+                        
+                        <?php
+                        
+                        }else{
+
+                        ?>
+
+                        <button onclick="window.location='<?php echo $explode[0].'/'.$explode[1].'/'.$explode[2].'/ml'; ?>'" type="button" class="btn btn-primary"> <img class="mr-2" src="img/oculos.png" width="35px"> Ativar Modo Leitura</button>
+
+                        <?php
+                        
+                        }
+
+                        ?>
 
                     </div>
 

@@ -178,7 +178,7 @@
 
                     <?php
                     
-                    if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
+                    if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"]) && !isset($explode[3])){
 
                         $classeAnotacao->numeroVersiculo = $arrCapitulo["ver_versiculo"];
 
@@ -196,13 +196,13 @@
                     
                     ?>
 
-                    <div class="<?php if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){ echo $bordaVerso; } ?>">
+                    <div class="<?php if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"]) && !isset($explode[3])){ echo $bordaVerso; } ?>">
 
                         <p id="texto_capitulo">
 
                         <?php
                         
-                        if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
+                        if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"]) && !isset($explode[3])){
                         
                         ?>
                         
@@ -226,7 +226,7 @@
 
                         <?php
                         
-                        if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
+                        if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"]) && !isset($explode[3])){
 
                             if($classeAnotacao->retornaAnotacaoPorVerso() != false){
 
@@ -286,7 +286,7 @@
 
                             <?php
 
-                            if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"])){
+                            if(isset($_COOKIE["id_usuario_ab"]) && isset($_COOKIE["email_usuario_ab"]) && isset($_COOKIE["senha_usuario_ab"]) && !isset($explode[3])){
 
                                 if($classeAnotacao->retornaAnotacaoSguindo() != false){
 
