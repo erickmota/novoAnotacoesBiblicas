@@ -19,17 +19,17 @@ if(isset($_GET["url"])){
     $explode = explode("/", $_GET["url"]);
 
     /* Verificando se é uma página que mostra o texto do capítulo */
-    if(isset($explode[0]) && isset($explode[1]) && isset($explode[2])){
+    if(isset($explode[0]) && isset($explode[1]) && isset($explode[2]) && !isset($explode[3])){
 
         include "paginas/capitulo.php";
 
     /* Página dos números do capítulo */
-    }else if(isset($explode[0]) && isset($explode[1]) && !isset($explode[2])){
+    }else if(isset($explode[0]) && isset($explode[1]) && !isset($explode[2]) && !isset($explode[3])){
 
         include "paginas/numero_capitulo.php";
 
     /* Um explode na URL apenas */
-    }else if(isset($explode[0]) && !isset($explode[1]) && !isset($explode[2])){
+    }else if(isset($explode[0]) && !isset($explode[1]) && !isset($explode[2]) && !isset($explode[3])){
 
         if($explode[0] == "login"){
 
@@ -38,6 +38,19 @@ if(isset($_GET["url"])){
         }else if($explode[0] == "cadastro"){
 
             include "paginas/cadastro.php";
+
+        }
+
+    /* Existencia de 4 valores na URL */
+    }else if(isset($explode[0]) && isset($explode[1]) && isset($explode[2]) && isset($explode[3])){
+
+        if($explode[3] == "ml"){
+
+            include "paginas/capitulo.php";
+
+        }else{
+
+            include "paginas/versiculo.php";
 
         }
 

@@ -232,7 +232,7 @@
 
                             ?>
 
-                                <p id="" class="text-danger pb-1">
+                                <div>
 
                                     <?php
                                     
@@ -240,7 +240,7 @@
                                     
                                     ?>
 
-                                </p>
+                                </div>
 
                                     <!-- Janela Modal dos comentários que são muitos grandes -->
                                     <div class="<?php echo "modal fade bd-modal-{$arrCapitulo["ver_id"]}-lg"; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -257,7 +257,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-left">
+                                                    <div class="text-left">
 
                                                         <?php
                                         
@@ -265,7 +265,7 @@
                                                         
                                                         ?>
 
-                                                    </p>
+                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Ver Versículo</button>
@@ -332,7 +332,7 @@
                                                     </button>
                                                 </div>
                                                     <div class="modal-body">
-                                                        <p class="text-left">
+                                                        <div class="text-left">
 
                                                             <?php
                                             
@@ -340,7 +340,7 @@
                                                             
                                                             ?>
 
-                                                        </p>
+                                                        </div>
                                                     </div>
                                                     <div class="modal-footer">
 

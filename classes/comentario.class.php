@@ -78,6 +78,8 @@ public function formataAnotacao($anotacao, $idVersiculo, $tamanho){
 
     if($tamanho == "pequeno") {
 
+        echo "<pre class='text-danger'>";
+
         while($i <= 90){
 
             if(preg_match('/^http:/', @$explode[$i]) or preg_match('/^https:/', @$explode[$i])){
@@ -99,6 +101,8 @@ public function formataAnotacao($anotacao, $idVersiculo, $tamanho){
         }
 
     }else{
+
+        echo "<pre>";
 
         while($i <= $numExplode){
 
@@ -127,6 +131,8 @@ public function formataAnotacao($anotacao, $idVersiculo, $tamanho){
         echo "... <a href='' data-toggle='modal' data-target='.bd-modal-$idVersiculo-lg'>Ver mais</a>"; /* ! */
 
     }
+
+    echo "</pre>";
 
 }
 

@@ -180,7 +180,7 @@ $(function () {
 
                         </div>
 
-                        <button id="botaoEnviarAnotacaoRapida" type="button" class="btn btn-outline-success btn-sm float-right ml-4">Salvar anotação</button>
+                        <button id="botaoEnviarAnotacaoRapida" type="button" class="btn btn-outline-primary btn-sm float-right ml-4">Salvar anotação</button>
 
                         <div id="areaIconeOk">
 
