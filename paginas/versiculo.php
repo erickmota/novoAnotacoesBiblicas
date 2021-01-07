@@ -21,7 +21,19 @@
     include "classes/capitulo.class.php";
     $classeCapitulo = new Capitulo();
 
+    /* Recebendo o ID do livro */
     $classeCapitulo->livro = $explode[0];
+    $idLivro = $classeCapitulo->retornarIdLivro();
+
+    /* Recebendo o ID da versao */
+    $classeCapitulo->versao = $explode[3];
+    $idVersao = $classeCapitulo->retornarIdVersao();
+
+    /* Informando capítulo a classe */
+    $classeCapitulo->capitulo = $explode[1];
+
+    /* Informando versículo a classe */
+    $classeCapitulo->verso = $explode[2];
 
     /* Obtendo a quantidade de cap[itulo do livro desejado */
     $qtdCapitulosPorLivro = $classeCapitulo->retornaQtdCapituloPorLivro($explode[1], $classeCapitulo->retornarIdLivro());
@@ -57,6 +69,29 @@
             window.location=livro;
 
         }
+
+        function trocarMenuMini(){
+
+            var img = document.getElementById("menuMini")
+            img.src="img/menuMiniPreto.png";
+
+        }
+
+        function voltarMenuMini(){
+
+            var img = document.getElementById("menuMini")
+            img.src="img/menuMini.png";
+
+        }
+
+        $(function () {
+            $('#menuMini').popover({
+            html: true,
+            content: function() {
+                    return $('#reportarVersoArea').html();
+                }
+            })
+        })
 
     </script>
 
@@ -130,9 +165,26 @@
 
             <div class="col-12 col-lg-9">
 
-                <img class="float-right mt-2" src="img/menuMini.png" width="15px">
+                <img id="menuMini" onmouseover="trocarMenuMini()" onmouseout="voltarMenuMini()" class="float-right mt-2" src="img/menuMini.png" width="15px">
 
-                <span id='numero_verso'>1</span> <span id="texto_capitulo">Mas agora, conhecendo a Deus, ou, antes, sendo conhecidos por Deus, como tornais outra vez a esses rudimentos fracos e pobres, aos quais de novo quereis servir? como tornais outra vez a esses rudimentos fracos e pobres, aos quais de novo quereis servir?</span>
+                <!-- <div id="reportarVersoArea" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <a class="dropdown-item btn-sinalizar" onclick="if (window.confirm('Tem certeza que deseja sinalizar esse versículo aos administradores?')) {window.location='php/sinalizarVerso.php?livro='} else {}"><img src="img/icone-atencao.png" width="20px"> &nbsp; Infomar erro no versículo</a>
+                    <div class="dropdown-divider"></div>
+                    <p class="p-2 text-center text-secondary">
+                        Clique no botão acima, para informar aos adiministradores erros no versículo, como tradução, formatação ou acentuação!
+                    </p>
+                </div> -->
+
+                <div id="reportarVersoArea" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+                    <span>Relatar Erro</span><br>
+                    <small>Caso tenha certeza que há algum erro nesse verso, informe abaixo e clique em relatar erro</small><br>
+
+                    <textarea>erere</textarea>
+
+                </div>
+
+                <span id='numero_verso'><?php echo $explode[2]; ?></span> <span id="texto_capitulo"><?php echo $classeCapitulo->retornaVerso($idLivro, $idVersao); ?></span>
 
             </div>
 

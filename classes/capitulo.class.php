@@ -8,6 +8,7 @@ class Capitulo{
 public $livro;
 public $capitulo;
 public $versao;
+public $verso;
 
 /* Classe responsável por retornar o ID do livro desejado */
 public function retornarIdLivro(){
@@ -49,6 +50,19 @@ public function exibirCapitulo($idLivro, $idVersao){
 
     return $array;
     
+}
+
+public function retornaVerso($idLivro, $idVersao){
+
+    include 'conexao.class.php';
+
+    $sql = mysqli_query($conn, "SELECT * FROM versiculos WHERE ver_liv_id='$idLivro' AND ver_capitulo='$this->capitulo' AND ver_vrs_id='$idVersao' AND ver_versiculo='$this->verso'");
+    $row = mysqli_fetch_array($sql);
+    $verso = $row["ver_texto"];
+
+    return $verso;
+
+
 }
 
 /* Função responsável por retroceder um capítulo */
@@ -211,6 +225,14 @@ public function salvarPassagem($posicao){
     $sql = mysqli_query($conn, "UPDATE usuarios SET livro$posicao='$this->livro' WHERE id='$idDecode'") or die("Erro salvar passagem");
     $sql = mysqli_query($conn, "UPDATE usuarios SET capitulo$posicao='$this->capitulo' WHERE id='$idDecode'") or die("Erro salvar passagem");
     
+}
+
+public function denunciarVerso($erroTexto){
+
+    include "conexao.class.php";
+
+    $sql = mysqli_query($conn, "INSERT passagens_erradas (livro, capitulo, verso, erro_texto) VALUES ('$this->livro', $this->capitulo, $this->verso, '$erroTexto')");
+
 }
 
 }
